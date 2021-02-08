@@ -32,7 +32,7 @@ namespace VulnerableService
 
         public string Decrypt(string dataToDecrypt)
         {
-            byte[] decyptbytes = System.Text.Encoding.UTF8.GetBytes(dataToDecrypt);
+            byte[] decryptbytes = System.Text.Encoding.UTF8.GetBytes(dataToDecrypt);
             encryptor.BlockSize = 128;
             encryptor.KeySize = 128;
             encryptor.Key = System.Text.Encoding.UTF8.GetBytes(encryptionKey);
@@ -42,7 +42,7 @@ namespace VulnerableService
 
             ICryptoTransform decrypt = encryptor.CreateDecryptor(encryptor.Key, encryptor.IV);
 
-            byte[] decryptedData = decrypt.TransformFinalBlock(decyptbytes, 0, decyptbytes.Length);
+            byte[] decryptedData = decrypt.TransformFinalBlock(decryptbytes, 0, decyptbytes.Length);
 
             decrypt.Dispose();
 
